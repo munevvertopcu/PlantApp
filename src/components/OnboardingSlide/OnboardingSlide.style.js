@@ -33,7 +33,7 @@ export default StyleSheet.create(
         },
         mainImage: {
             resizeMode: "contain",
-            height: "100%"
+            height: "100%",
         },
         overlayImage: {
             position: 'absolute',

@@ -8,15 +8,17 @@ export const slides = [
         overlays: [
             {
                 source: require('../../assets/icon1.png'),
-                style: { top: -20, left: 20, width: 99.05, height: 106.29 },
+                style: { top: -5, left: 20 },
             },
             {
                 source: require('../../assets/icon2.png'),
-                style: { top: 16, left: 249, width: 67.78, height: 75.53 },
+                style: { top: 23, left: 200 },
+                zIndex: -1
             },
             {
                 source: require('../../assets/icon3.png'),
-                style: { top: 299, left: 200, width: 78, height: 90.96 },
+                style: { top: 319, left: 175 },
+                zIndex: -1
             },
         ],
         buttonText: 'Get Started',
@@ -26,21 +28,7 @@ export const slides = [
         title: 'Welcome to',
         highlight: 'PlantApp',
         subtitle: 'Identify more than 3000+ plants and 88% accuracy.',
-        mainImage: require('../../assets/image.png'),
-        overlays: [
-            {
-                source: require('../../assets/icon1.png'),
-                style: { top: -20, left: -60, width: 112, height: 118 },
-            },
-            {
-                source: require('../../assets/icon2.png'),
-                style: { top: -20, right: -60, width: 112, height: 118 },
-            },
-            {
-                source: require('../../assets/icon3.png'),
-                style: { bottom: -30, right: -30, width: 112, height: 118 },
-            },
-        ],
+        mainImage: require('../../assets/image2.png'),
         buttonText: 'Continue',
     }
 ];
