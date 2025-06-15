@@ -46,7 +46,7 @@ function CustomTabButton({ onPress }: CustomTabButtonProps) {
 const TAB_ICONS: Record<keyof RootTabParamList, React.ComponentProps<typeof MaterialIcons>['name']> = {
     Home: 'home',
     Diagnose: 'health-and-safety',
-    Scan: 'scan',
+    Scan: 'qr-code-scanner',
     MyGarden: 'energy-savings-leaf',
     Profile: 'person',
 };

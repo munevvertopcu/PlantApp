@@ -4,11 +4,11 @@ import styles from './ActionButton.style';
 import { RadioButton } from 'react-native-paper';
 
 interface ActionButtonProps {
-  checked: string;
-  setChecked: (value: string) => void;
+  checked: 'first' | 'second';
+  setChecked: (value: 'first' | 'second') => void;
   title: string;
   text: string;
-  value: string;
+  value: 'first' | 'second';
 }
 
 const ActionButton: FC<ActionButtonProps> = ({ checked, setChecked, title, text, value }) => {
