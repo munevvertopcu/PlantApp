@@ -6,14 +6,24 @@ import FeatureItem from '../../components/FeatureItem';
 import ActionButton from '../../components/ActionButton';
 import CommonButton from '../../components/CommonButton';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useDispatch } from 'react-redux';
+import { completeOnboarding } from '../../redux/features/onBoardingSlice';
+import { SetCompleted } from '../../controllers/asyncStorageController';
 
 export default function Paywall() {
     const [checked, setChecked] = React.useState('first');
 
+    const dispatch = useDispatch();
+
+    const handleComplete = async () => {
+        await SetCompleted('true');
+        dispatch(completeOnboarding());
+    };
+
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../../assets/Image.jpg')} style={styles.bg} resizeMode='cover'>
-                <TouchableOpacity style={styles.closeButton} >
+                <TouchableOpacity style={styles.closeButton} onPress={handleComplete}>
                     <AntDesign name="closecircle" size={20} color="white" />
                 </TouchableOpacity>
                 <View style={styles.listWrapper}>
