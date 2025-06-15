@@ -7,9 +7,9 @@ import OnboardingSlide from '../../components/OnboardingSlide';
 import Pagination from '../../components/Pagination';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-function Onboarding() {
+function Onboarding({ navigation }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const flatListRef = useRef(null);
 
@@ -17,7 +17,7 @@ function Onboarding() {
         if (currentIndex < slides.length - 1) {
             flatListRef.current.scrollToIndex({ index: currentIndex + 1 });
         } else {
-            navigation.replace('Home');
+            navigation.navigate('Paywall');
         }
     };
 
@@ -55,7 +55,10 @@ function Onboarding() {
                     <Pagination data={slides} currentIndex={currentIndex} />
                 )
             }
-            <CommonButton title={slides[currentIndex].buttonText} onPress={handleNext} />
+            <CommonButton
+                title={slides[currentIndex].buttonText}
+                onPress={handleNext}
+                buttonStyle={styles.button} />
         </LinearGradient>
     )
 }

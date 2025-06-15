@@ -10,8 +10,7 @@ export default StyleSheet.create(
             position: "relative"
         },
         slide: {
-            flex: 1,
-            marginBottom: 110,
+            marginBottom: 90,
         },
         text: {
             color: "#597165B2",
@@ -21,6 +20,10 @@ export default StyleSheet.create(
             position: "absolute",
             bottom: 40,
             fontFamily: "Rubik-Regular"
+        },
+        button: {
+            position: "absolute",
+            bottom: 90
         }
     }
 );

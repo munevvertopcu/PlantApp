@@ -2,28 +2,35 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import styles from './OnboardingSlide.style';
 
-const ORIGINAL_MAIN_IMAGE_WIDTH = 375;
-const ORIGINAL_MAIN_IMAGE_HEIGHT = 499;
-
 function OnboardingSlide({ item }) {
-
-    const [mainImageLayout, setMainImageLayout] = React.useState({ width: 0, height: 0 });
-
-    const getOverlayStyle = (figmaStyle) => {
-        const { width, height } = mainImageLayout;
-
-        return {
-            top: (figmaStyle.top / ORIGINAL_MAIN_IMAGE_HEIGHT) * height,
-            left: (figmaStyle.left / ORIGINAL_MAIN_IMAGE_WIDTH) * width,
-        };
-    };
 
     return (
         <View style={styles.container}>
-            <View style={styles.textContainer}>
-                <Text style={styles.title}>
-                    {item.title} <Text style={styles.highlight}>{item.highlight}</Text>
-                </Text>
+            <View style={[styles.textContainer, { marginBottom: item.id === 3 && 50 }]}>
+                <View style={styles.titleWrapper}>
+                    {item.titleParts.map((part, index) => {
+                        if (part.isUnderline) {
+                            return (
+                                <View key={index} style={styles.highlightWrapper}>
+                                    <Text style={[styles.title, { fontFamily: part.font }]}>
+                                        {part.text}
+                                    </Text>
+                                    <Image
+                                        source={require('../../../assets/Line.png')}
+                                        style={styles.lineImage}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                            );
+                        }
+
+                        return (
+                            <Text key={index} style={[styles.title, { fontFamily: part.font }]}>
+                                {part.text}
+                            </Text>
+                        );
+                    })}
+                </View>
                 {
                     item.subtitle && <Text style={styles.subtitle}>{item.subtitle}</Text>
                 }
@@ -31,16 +38,12 @@ function OnboardingSlide({ item }) {
             <View style={styles.imageContainer}>
                 <Image
                     source={item.mainImage}
-                    style={styles.mainImage}
-                    onLayout={(e) => {
-                        const { width, height } = e.nativeEvent.layout;
-                        setMainImageLayout({ width, height });
-                    }} />
-                {mainImageLayout.width > 0 && item.overlays?.map((overlay, index) => (
+                    style={styles.mainImage} />
+                {item.overlays?.map((overlay, index) => (
                     <Image
                         key={index}
                         source={overlay.source}
-                        style={[getOverlayStyle(overlay.style), styles.overlayImage, { zIndex: overlay.zIndex ?? 0 }]} />
+                        style={[overlay.style, styles.overlayImage]} />
                 ))}
             </View>
         </View>

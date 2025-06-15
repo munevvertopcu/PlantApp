@@ -1,23 +1,20 @@
 import { StyleSheet, Dimensions } from 'react-native';
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create(
     {
         container: {
             alignItems: "center",
             paddingHorizontal: 24,
-            width: width
+            width: width,
         },
         textContainer: {
             paddingTop: 50
         },
         title: {
             color: '#13231B',
-            fontSize: 28,
+            fontSize: 26,
             fontFamily: 'Rubik-Regular'
-        },
-        highlight: {
-            fontFamily: 'Rubik-Medium'
         },
         subtitle: {
             fontSize: 16,
@@ -33,7 +30,22 @@ export default StyleSheet.create(
         },
         mainImage: {
             resizeMode: "contain",
-            height: "100%",
+            height: '100%',
+        },
+        titleWrapper: {
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            alignItems: 'flex-start',
+        },
+
+        highlightWrapper: {
+            position: 'relative',
+            alignItems: "flex-end",
+        },
+
+        lineImage: {
+            position: 'absolute',
+            bottom: -20
         },
         overlayImage: {
             position: 'absolute',
