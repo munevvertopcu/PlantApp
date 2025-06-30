@@ -3,7 +3,7 @@ import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import OnboardingStackNavigator from './OnboardingStackNavigator';
-import HomeStackNavigator from './HomeStackNavigator';
+import HomeNavigator from './HomeNavigator';
 import useOnboardingStatus from '../hooks/useOnboardingStatus';
 
 export default function RootNavigator() {
@@ -24,7 +24,7 @@ export default function RootNavigator() {
     return (
         <NavigationContainer>
             {!onboardingDone ?
-                <OnboardingStackNavigator /> : <HomeStackNavigator />
+                <OnboardingStackNavigator /> : <HomeNavigator />
             }
         </NavigationContainer>
     );
